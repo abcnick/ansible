@@ -1,7 +1,6 @@
 ---
 - name: Creacion y despliegue de contenedor
   hosts: localhost
-  become: yes
 
   vars:
    - repositorio_dockerfile: "/home/desarrollo1/dockerfile/Dockerfile"
@@ -22,73 +21,30 @@
      file:
        path: "{{ repositorio_dockerfile }}"
        state: touch
-     tags:
-     - crear_dockerfile
-     - construir
-
-   - name: Eliminar dockerfile
-     file:
-       path: "{{ repositorio_dockerfile }}"
-       state: absent
-     tags:
-     - eliminar_imagen
-     - destruir
-     
 
    - name: dockerfile fase 1
      lineinfile:
        path: "{{ repositorio_dockerfile }}"
        line: 'FROM jboss/wildfly:23.0.0.Final'
-     tags:
-     - fases_imagenes
-     - construir
 
    - name: dockerfile fase 2
      lineinfile:
        path: "{{ repositorio_dockerfile }}"
        insertafter: '^#Final '
        line: 'RUN /opt/jboss/wildfly/bin/add-user.sh "{{ user }}" "{{ password }}" --silent'
-     tags:
-     - fases_imagenes
-     - construir
 
    - name: dockerfile fase 3
      lineinfile:
        path: "{{ repositorio_dockerfile }}"
        insertafter: '^#silent '
        line: 'CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]'
-     tags:
-     - fases_imagenes
-     - construir
 
    - name: Construir Imagen
      command: docker build --tag="{{ Nom_imagen }}" .
      args:
          chdir: "{{ directorio_dockerfile }}"
-     tags:
-     - Contruir_imagen
-     - construir
 
    - name: Construir Contenedor
      command: docker run -p 49154:8080 -p 49156:9990 -d --name "{{ Nom_cont }}" -it "{{ Nom_imagen }}"
      args:
          chdir: /home/desarrollo1
-     tags:
-     - Construir_contenedor
-     - construir
-
-   - name: Detener Imagen
-     command: docker stop "{{ Nom_cont }}"
-     args:
-         chdir: "{{ directorio_dockerfile }}"
-     tags:
-     - eliminar_contenedor
-     - destruir
-
-   - name: Eliminar Imagen
-     command: docker rm "{{ Nom_cont }}"
-     args:
-         chdir: "{{ directorio_dockerfile }}"
-     tags:
-     - eliminar_contenedor
-     - destruir
