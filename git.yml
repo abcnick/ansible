@@ -1,7 +1,8 @@
 ---
 - name: Clon Git
   hosts: localhost
-
+  sudo: yes
+  
   vars:
    - repositorio: "https://github.com/abcnick/Prueba-pipeline.git"
    - rama: "master"
