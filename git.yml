@@ -1,8 +1,6 @@
 ---
 - name: Clon Git
   hosts: localhost
-  su: yes 
-  su_user: root
   
   vars:
    - repositorio: "https://github.com/abcnick/Prueba-pipeline.git"
