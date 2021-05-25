@@ -10,6 +10,7 @@
   tasks:
 
    - name: Clone Repo
+     become: yes
      become_user: root
      git:
        repo: "{{ repositorio }}"
