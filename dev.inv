@@ -1,2 +1,2 @@
-[webservers]
-3.80.111.175 ansible_user=ubuntu
+[localhost]
+3.80.111.175 ansible_user=ubuntu  ansible_become_pass=<>
