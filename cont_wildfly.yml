@@ -1,7 +1,9 @@
 ---
 - name: Creacion y despliegue de contenedor
   hosts: localhost
-  become_user: ubuntu
+  become: true
+  become_method: su
+  become_user: nobody
   
   vars:
    - repositorio_dockerfile: "/root/dockerfile/Dockerfile"
