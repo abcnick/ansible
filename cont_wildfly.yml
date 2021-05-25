@@ -1,6 +1,6 @@
 ---
 - name: Creacion y despliegue de contenedor
-  hosts: webservers
+  hosts: localhost
   
   vars:
    - repositorio_dockerfile: "/root/dockerfile/Dockerfile"
