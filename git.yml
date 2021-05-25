@@ -10,8 +10,6 @@
   tasks:
 
    - name: Clone Repo
-     become: true
-     become_user: ubuntu
      git:
        repo: "{{ repositorio }}"
        version: "{{ rama }}"
