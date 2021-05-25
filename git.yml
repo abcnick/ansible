@@ -11,8 +11,6 @@
 
    - name: Clone Repo
      become_user: ubuntu
-     become: true
-     
      git:
        repo: "{{ repositorio }}"
        version: "{{ rama }}"
