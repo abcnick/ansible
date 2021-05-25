@@ -18,7 +18,6 @@
   tasks:
 
    - name: Crear dockerfile
-     become: yes
      file:
        path: "{{ repositorio_dockerfile }}"
        state: touch
