@@ -3,9 +3,9 @@
   hosts: localhost
   
   vars:
-   - repositorio_dockerfile: "/root/dockerfile/Dockerfile"
+   - repositorio_dockerfile: "/home/ubuntu/Dockerfile"
 
-   - directorio_dockerfile: "/root/dockerfile"
+   - directorio_dockerfile: "/home/ubuntu"
 
    - Nom_imagen: "jboss/wildfly-admin-demo"
 
