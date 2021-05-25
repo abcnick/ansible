@@ -1,6 +1,7 @@
 ---
 - name: Creacion y despliegue de contenedor
   hosts: localhost
+  become: true
   
   vars:
    - repositorio_dockerfile: "/home/ubuntu/dockerfile/Dockerfile"
