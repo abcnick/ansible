@@ -5,7 +5,7 @@
   tasks:
 
    - name: validar version
-     command: httpd -v
+     command: docker -v
      register: version
      tags:
      - version
