@@ -9,17 +9,11 @@
 
   tasks:
 
-   - name: Clone Repo
-     git:
-       repo: "{{ repositorio }}"
-       version: "{{ rama }}"
-       dest: "{{ proy_codigo }}"
-
    - name: Last Commit
      command: git log -1
      register: infocommit
      args:
-       chdir: "{{ proy_codigo }}"
+       chdir: "{{ repositorio }}"
 
    - name: Mensaje Commit
      debug: var=infocommit.stdout_lines
