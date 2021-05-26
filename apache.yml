@@ -1,5 +1,5 @@
 ---
-- name: validacion de docker
+- name: validacion de docker apacche y git
   hosts: localhost
 
   tasks:
@@ -25,6 +25,17 @@
      debug: var=version1.stdout_lines
      tags:
      - version
+     
+   - name: validar version git
+     command: git --version
+     register: version2
+     tags:
+     - version
+
+   - name: mostrar version del git
+     debug: var=version2.stdout_lines
+     tags:
+     - version     
      
 
 ...
