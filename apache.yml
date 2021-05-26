@@ -1,5 +1,5 @@
 ---
-- name: Instalacion de apache
+- name: validacion de apache
   hosts: localhost
 
   tasks:
